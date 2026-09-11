@@ -1,0 +1,56 @@
+{
+  "name": "@jash90/openrouter-model-picker",
+  "version": "0.1.0",
+  "description": "Searchable React picker over every OpenRouter model, with live USD-per-1M-token prices, vendor filter, sorting and keyboard navigation. No Tailwind or state library required.",
+  "license": "MIT",
+  "author": "Bartlomiej Zimny",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jash90/openrouter-model-picker.git"
+  },
+  "homepage": "https://github.com/jash90/openrouter-model-picker#readme",
+  "bugs": "https://github.com/jash90/openrouter-model-picker/issues",
+  "keywords": ["openrouter", "react", "model-picker", "llm", "pricing", "combobox", "select"],
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "dev": "vite --config vite.demo.config.ts",
+    "build": "vite build && cp src/styles.css dist/styles.css",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "jsdom": "^26.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.0",
+    "vite": "^7.0.0",
+    "vite-plugin-dts": "^4.5.0",
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
