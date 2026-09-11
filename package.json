@@ -1,5 +1,5 @@
 {
-  "name": "@jash90/openrouter-model-picker",
+  "name": "react-openrouter-model-picker",
   "version": "0.1.0",
   "description": "Searchable React picker over every OpenRouter model, with live USD-per-1M-token prices, vendor filter, sorting and keyboard navigation. No Tailwind or state library required.",
   "license": "MIT",

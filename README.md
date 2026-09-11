@@ -1,4 +1,4 @@
-# @jash90/openrouter-model-picker
+# react-openrouter-model-picker
 
 A searchable React picker over **every** model available on [OpenRouter](https://openrouter.ai), with live prices per 1M tokens on each row. Text search across id, name and vendor, vendor filter, sorting (name / cheapest / newest / context), keyboard navigation, dark mode, English and Polish labels.
 
@@ -9,14 +9,14 @@ No Tailwind, no state library, no OpenRouter API key required for the list. Reac
 ## Install
 
 ```bash
-npm i @jash90/openrouter-model-picker
+npm i react-openrouter-model-picker
 ```
 
 ## Quick start
 
 ```tsx
-import { OpenRouterModelPicker, useOpenRouterModels } from '@jash90/openrouter-model-picker';
-import '@jash90/openrouter-model-picker/styles.css';
+import { OpenRouterModelPicker, useOpenRouterModels } from 'react-openrouter-model-picker';
+import 'react-openrouter-model-picker/styles.css';
 
 function ModelSelect() {
   const [model, setModel] = useState('');
