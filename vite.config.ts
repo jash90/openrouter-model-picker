@@ -5,8 +5,10 @@ import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 
 // `typescript` is the TS 6 API package (@typescript/typescript6), which ships no lib.*.d.ts files.
-// API Extractor (rollupTypes) needs a compiler folder with them, so point it at the real TS 6 package.
-const tsCompilerFolder = dirname(createRequire(import.meta.url).resolve('@typescript/old/package.json'));
+// API Extractor (rollupTypes) needs a compiler folder with them, so point it at the real TS 6 package
+// that the shim depends on, resolved from the shim itself rather than relying on npm hoisting.
+const requireFromTs = createRequire(createRequire(import.meta.url).resolve('typescript'));
+const tsCompilerFolder = dirname(requireFromTs.resolve('@typescript/old/package.json'));
 
 export default defineConfig({
   plugins: [
