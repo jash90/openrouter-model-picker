@@ -1,10 +1,25 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
-import { resolve } from 'node:path';
+import { createRequire } from 'node:module';
+import { dirname, resolve } from 'node:path';
+
+// `typescript` is the TS 6 API package (@typescript/typescript6), which ships no lib.*.d.ts files.
+// API Extractor (rollupTypes) needs a compiler folder with them, so point it at the real TS 6 package.
+const tsCompilerFolder = dirname(createRequire(import.meta.url).resolve('@typescript/old/package.json'));
 
 export default defineConfig({
-  plugins: [react(), dts({ include: ['src'], exclude: ['src/**/*.test.*', 'src/test-setup.ts'], rollupTypes: true, compilerOptions: { rootDir: resolve(__dirname, 'src') } })],
+  plugins: [
+    react(),
+    dts({
+      include: ['src'],
+      exclude: ['src/**/*.test.*', 'src/test-setup.ts'],
+      rollupTypes: true,
+      // TS 6+ defaults rootDir to the tsconfig folder; keep declarations flat in dist/.
+      compilerOptions: { rootDir: resolve(__dirname, 'src') },
+      rollupOptions: { typescriptCompilerFolder: tsCompilerFolder },
+    }),
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
