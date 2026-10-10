@@ -10,6 +10,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "noEmit": true,
+    "noUncheckedSideEffectImports": false,
     "types": ["vitest/globals", "node"]
   },
   "include": ["src", "demo", "vite.config.ts", "vite.demo.config.ts"]
