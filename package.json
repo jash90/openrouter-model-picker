@@ -43,7 +43,7 @@
   "scripts": {
     "dev": "vite --config vite.demo.config.ts",
     "build": "vite build && cp src/styles.css dist/styles.css",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "node node_modules/@typescript/native/bin/tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "prepublishOnly": "npm run typecheck && npm test && npm run build"
   },
